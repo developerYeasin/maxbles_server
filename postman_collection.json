@@ -1,0 +1,636 @@
+{
+	"info": {
+		"_postman_id": "YOUR_POSTMAN_ID",
+		"name": "Maxbles Agency Backend APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "adminRoutes",
+			"item": [
+				{
+					"name": "Register Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": "Use this once to create your admin user"
+					},
+					"response": []
+				},
+				{
+					"name": "Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "blogRoutes",
+			"item": [
+				{
+					"name": "Get All Blog Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/blog-posts?limit=10&offset=0&sortBy=date&order=desc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"blog-posts"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "sortBy",
+									"value": "date"
+								},
+								{
+									"key": "order",
+									"value": "desc"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Blog Post By Slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/blog-posts/:slug",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"blog-posts",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "example-slug"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Blog Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/blog-posts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"blog-posts"
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Example Title\",\n    \"excerpt\": \"Example Excerpt\",\n    \"content\": \"Example Content\",\n    \"image\": \"https://example.com/image.jpg\",\n    \"author\": \"John Doe\",\n    \"readTime\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Blog Post",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/blog-posts/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"blog-posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "example-id"
+								}
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Title\",\n    \"excerpt\": \"Updated Excerpt\",\n    \"content\": \"Updated Content\",\n    \"image\": \"https://example.com/updated-image.jpg\",\n    \"author\": \"Jane Doe\",\n    \"readTime\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Blog Post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/blog-posts/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"blog-posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "example-id"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contactRoutes",
+			"item": [
+				{
+					"name": "Submit Contact Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/contact",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contact"
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"subject\": \"Example Subject\",\n    \"message\": \"Example Message\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Messages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/contact/messages",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contact",
+								"messages"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Message",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/contact/messages/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contact",
+								"messages",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "example-id"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "portfolioRoutes",
+			"item": [
+				{
+					"name": "Get All Portfolio Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/portfolio-items?limit=10&offset=0&category=exampleCategory&type=exampleType",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portfolio-items"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "category",
+									"value": "exampleCategory"
+								},
+								{
+									"key": "type",
+									"value": "exampleType"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Portfolio Item By Slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/portfolio-items/:slug",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portfolio-items",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "example-slug"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Portfolio Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/portfolio-items",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portfolio-items"
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Example Title\",\n    \"category\": \"Example Category\",\n    \"type\": \"Example Type\",\n    \"liveUrl\": \"https://example.com\",\n    \"githubUrl\": \"https://github.com/example\",\n    \"image\": \"https://example.com/image.jpg\",\n    \"description\": \"Example Description\",\n    \"fullContent\": \"Example Full Content\",\n    \"tags\": [\"tag1\", \"tag2\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Portfolio Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/portfolio-items/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portfolio-items",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "example-id"
+								}
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Title\",\n    \"category\": \"Updated Category\",\n    \"type\": \"Updated Type\",\n    \"liveUrl\": \"https://updated.com\",\n    \"githubUrl\": \"https://github.com/updated\",\n    \"image\": \"https://example.com/updated.jpg\",\n    \"description\": \"Updated Description\",\n    \"fullContent\": \"Updated Full Content\",\n    \"tags\": [\"tag3\", \"tag4\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Portfolio Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/portfolio-items/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portfolio-items",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "example-id"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+        {
+			"name": "testimonialRoutes",
+			"item": [
+				{
+					"name": "Get All Testimonials",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/testimonials",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"testimonials"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Testimonial",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/testimonials",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"testimonials"
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quote\": \"Example Quote\",\n    \"name\": \"John Doe\",\n    \"title\": \"Example Title\",\n    \"avatar\": \"https://example.com/avatar.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Testimonial",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/testimonials/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"testimonials",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "example-id"
+								}
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quote\": \"Updated Quote\",\n    \"name\": \"Jane Doe\",\n    \"title\": \"Updated Title\",\n    \"avatar\": \"https://example.com/updated-avatar.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Testimonial",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/testimonials/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"testimonials",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "example-id"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "YOUR_AUTH_TOKEN",
+			"type": "string"
+		}
+	]
+}
