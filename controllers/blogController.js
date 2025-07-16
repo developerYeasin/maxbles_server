@@ -66,7 +66,7 @@ const getBlogPostBySlug = async (req, res) => {
 // @route   POST /api/blog-posts
 // @access  Private (Admin)
 const createBlogPost = async (req, res) => {
-    const { title, excerpt, content, image, author, readTime } = req.body;
+    const { title, excerpt, content, image, author, read_time } = req.body;
     try {
         const newPost = {
             id: uuidv4(),
@@ -77,7 +77,7 @@ const createBlogPost = async (req, res) => {
             content,
             image,
             author,
-            read_time: readTime
+            read_time
         };
 
         await db.query('INSERT INTO blog_posts SET ?', newPost);
@@ -92,7 +92,7 @@ const createBlogPost = async (req, res) => {
 // @access  Private (Admin)
 const updateBlogPost = async (req, res) => {
     const { id } = req.params;
-    const { title, excerpt, content, image, author, readTime } = req.body;
+    const { title, excerpt, content, image, author, read_time } = req.body;
     
     try {
         const updateData = {

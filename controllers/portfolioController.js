@@ -82,7 +82,7 @@ const getPortfolioItemBySlug = async (req, res) => {
 // @route   POST /api/portfolio-items
 // @access  Private (Admin)
 const createPortfolioItem = async (req, res) => {
-    const { title, category, type, liveUrl, githubUrl, image, description, fullContent, tags } = req.body;
+    const { title, category, type, live_url, github_url, image, description, full_content, tags } = req.body;
     
     try {
         const newItem = {
@@ -91,12 +91,12 @@ const createPortfolioItem = async (req, res) => {
             title,
             category,
             type,
-            live_url: liveUrl,
-            github_url: githubUrl,
+            live_url,
+            github_url,
             image,
             description,
-            full_content: fullContent,
-            tags: JSON.stringify(tags || []), // Store as a JSON string
+            full_content,
+            tags: JSON.stringify(tags || []),
         };
 
         await db.query('INSERT INTO portfolio_items SET ?', newItem);
@@ -111,7 +111,7 @@ const createPortfolioItem = async (req, res) => {
 // @access  Private (Admin)
 const updatePortfolioItem = async (req, res) => {
     const { id } = req.params;
-    const { title, category, type, liveUrl, githubUrl, image, description, fullContent, tags } = req.body;
+    const { title, category, type, live_url, github_url, image, description, full_content, tags } = req.body;
     
     try {
         const updateData = {
@@ -119,11 +119,11 @@ const updatePortfolioItem = async (req, res) => {
             slug: slugify(title, { lower: true, strict: true }),
             category,
             type,
-            live_url: liveUrl,
-            github_url: githubUrl,
+            live_url,
+            github_url,
             image,
             description,
-            full_content: fullContent,
+            full_content,
             tags: JSON.stringify(tags || []),
             updated_at: new Date()
         };
