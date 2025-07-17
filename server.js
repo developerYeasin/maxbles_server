@@ -9,6 +9,7 @@ const portfolioRoutes = require('./routes/portfolioRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const testimonialRoutes = require('./routes/testimonialRoutes');
+const cloudinaryRoutes = require('./routes/cloudinaryRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3034;
@@ -23,6 +24,7 @@ app.use('/api', portfolioRoutes);
 app.use('/api', contactRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api', testimonialRoutes);
+app.use('/api', cloudinaryRoutes);
 
 // Simple root route
 app.get('/', (req, res) => {
