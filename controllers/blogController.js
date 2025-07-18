@@ -102,7 +102,7 @@ const updateBlogPost = async (req, res) => {
             content,
             image,
             author,
-            read_time: readTime,
+            read_time,
             updated_at: new Date()
         };
 
