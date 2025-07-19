@@ -11,6 +11,7 @@ const adminRoutes = require('./routes/adminRoutes');
 const testimonialRoutes = require('./routes/testimonialRoutes');
 const cloudinaryRoutes = require('./routes/cloudinaryRoutes');
 const logoRoutes = require('./routes/logoRoutes');
+const notificationRoutes = require('./routes/notificationRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3034;
@@ -27,6 +28,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api', testimonialRoutes);
 app.use('/api', cloudinaryRoutes);
 app.use('/api', logoRoutes);
+app.use('/api', notificationRoutes);
 
 // Simple root route
 app.get('/', (req, res) => {

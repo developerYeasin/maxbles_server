@@ -2,6 +2,7 @@
 const db = require('../config/db');
 const { v4: uuidv4 } = require('uuid');
 const slugify = require('slugify');
+const { sendNotification } = require('../config/webpush');
 
 // @desc    Get all portfolio items with optional filters
 // @route   GET /api/portfolio-items
@@ -100,6 +101,28 @@ const createPortfolioItem = async (req, res) => {
         };
 
         await db.query('INSERT INTO portfolio_items SET ?', newItem);
+
+        const [subscriptions] = await db.query('SELECT * FROM push_subscriptions');
+        const notificationPayload = {
+            title: 'New Portfolio Item!',
+            body: title,
+            icon: 'path_to_icon',
+            data: {
+                url: `/portfolio/${newItem.slug}`
+            }
+        };
+
+        for (const subscription of subscriptions) {
+            const sub = {
+                endpoint: subscription.endpoint,
+                keys: {
+                    p256dh: subscription.p256dh,
+                    auth: subscription.auth
+                }
+            };
+            await sendNotification(sub, notificationPayload);
+        }
+
         res.status(201).json({...newItem, tags: tags || []}); // Return parsed tags
     } catch (error) {
         res.status(500).json({ status: 'error', message: 'Failed to create portfolio item.', error: error.message });

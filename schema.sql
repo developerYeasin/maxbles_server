@@ -71,3 +71,14 @@ CREATE TABLE logos (
     web_url VARCHAR(2048),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Table for Push Subscriptions
+CREATE TABLE push_subscriptions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    endpoint TEXT NOT NULL,
+    p256dh VARCHAR(255) NOT NULL,
+    auth VARCHAR(255) NOT NULL,
+    ip_address VARCHAR(45),
+    user_agent VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

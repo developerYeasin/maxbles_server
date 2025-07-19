@@ -2,6 +2,7 @@
 const db = require('../config/db');
 const { v4: uuidv4 } = require('uuid');
 const slugify = require('slugify');
+const { sendNotification } = require('../config/webpush');
 
 // @desc    Get all blog posts with optional query params
 // @route   GET /api/blog-posts
@@ -81,6 +82,28 @@ const createBlogPost = async (req, res) => {
         };
 
         await db.query('INSERT INTO blog_posts SET ?', newPost);
+
+        const [subscriptions] = await db.query('SELECT * FROM push_subscriptions');
+        const notificationPayload = {
+            title: 'New Blog Post!',
+            body: title,
+            icon: 'path_to_icon',
+            data: {
+                url: `/blog/${newPost.slug}`
+            }
+        };
+
+        for (const subscription of subscriptions) {
+            const sub = {
+                endpoint: subscription.endpoint,
+                keys: {
+                    p256dh: subscription.p256dh,
+                    auth: subscription.auth
+                }
+            };
+            await sendNotification(sub, notificationPayload);
+        }
+
         res.status(201).json(newPost);
     } catch (error) {
         res.status(500).json({ status: 'error', message: 'Failed to create blog post.', error: error.message });
