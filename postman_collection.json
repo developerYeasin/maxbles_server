@@ -801,7 +801,54 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": ""
+		},
+		{
+			"name": "Send Test Notification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "string"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/send-test-notification",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"send-test-notification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Subscriptions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "string"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/subscriptions",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"subscriptions"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"variable": [
