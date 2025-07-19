@@ -619,6 +619,158 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "logoRoutes",
+			"item": [
+				{
+					"name": "Get All Logos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/logos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"logos"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Logo By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/logos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"logos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Logo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/logos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"logos"
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Example Logo\",\n    \"image_url\": \"https://example.com/logo.jpg\",\n    \"web_url\": \"https://example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Logo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/logos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"logos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Logo\",\n    \"image_url\": \"https://example.com/updated-logo.jpg\",\n    \"web_url\": \"https://updated.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Logo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "string"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/logos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"logos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"variable": [
